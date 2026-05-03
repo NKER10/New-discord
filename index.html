@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000000; /* PURE BLACK */
+      background: #000000;
       color: white;
     }
 
@@ -38,6 +38,17 @@
       padding: 40px;
       max-width: 900px;
       margin: auto;
+
+      /* animation setup */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    /* when visible */
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card {
@@ -61,10 +72,6 @@
       background: #1e293b;
       margin-top: 40px;
     }
-
-    h1, h2, h3, p {
-      margin: 10px 0;
-    }
   </style>
 </head>
 
@@ -76,6 +83,7 @@
 
 <nav>
   <a href="#services">Services</a>
+  <a href="#pricing">Pricing</a>
   <a href="#why">Why Me</a>
   <a href="#contact">Contact</a>
 </nav>
@@ -85,7 +93,6 @@
   <p>I create, manage, and optimise Discord servers for communities, roleplay, and gaming.</p>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <h2>Services</h2>
 
@@ -105,7 +112,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <h2>Packages</h2>
 
@@ -125,19 +131,17 @@
   </div>
 </section>
 
-<!-- WHY ME -->
 <section id="why">
   <h2>Why Choose Me</h2>
 
   <div class="card">
     <p>
-      I have high experience in Discord server development and management.  
-      I focus on professionalism, structure, and meeting deadlines while delivering high-quality servers tailored to your needs.
+      I have high experience in Discord server development and management.
+      I focus on professionalism, structure, and delivering high-quality results on time.
     </p>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact Me</h2>
   <p>DM me on Discord: <strong>𝓝𝓸𝓪𝓱 (un52910163)</strong></p>
@@ -147,6 +151,25 @@
 <footer>
   © 2026 Discord Services | Built by Noah
 </footer>
+
+<!-- ANIMATION SCRIPT -->
+<script>
+  const sections = document.querySelectorAll("section");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
 
 </body>
 </html>
