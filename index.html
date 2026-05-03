@@ -1,247 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hire Noah | Discord Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Me | Discord Services</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
-    /* ===== PARTICLES BACKGROUND ===== */
-    #particles {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      background: #000;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
 
-    .particle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: #38bdf8;
-      border-radius: 50%;
-      opacity: 0.5;
-      animation: float 10s linear infinite;
-    }
+/* ===== Scroll Animation (AOS-style) ===== */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
 
-    @keyframes float {
-      from {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(-10vh);
-        opacity: 1;
-      }
-    }
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    header {
-      background: #1e293b;
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
+/* ===== Header ===== */
+header {
+  background: #0b1220;
+  padding: 25px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  border-bottom: 1px solid #1e293b;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
-      background: #0f172a;
-    }
+/* ===== Nav ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 15px;
+  background: #0a0f1a;
+}
 
-    nav a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
+nav a {
+  color: #38bdf8;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    section {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
+nav a:hover {
+  text-shadow: 0 0 10px #38bdf8;
+}
 
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
+/* ===== Hero ===== */
+#hero {
+  text-align: center;
+  padding: 60px 20px;
+}
 
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ===== Sections ===== */
+section {
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+}
 
-    /* ===== GLASS CARDS + GLOW ===== */
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      transition: 0.3s ease;
-      box-shadow: 0 0 0 rgba(56, 189, 248, 0);
-    }
+/* ===== Cards ===== */
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-    }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
 
-    button {
-      background: #38bdf8;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+/* ===== Button ===== */
+button {
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(56,189,248,0.4);
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1e293b;
-      margin-top: 40px;
-    }
+button:hover {
+  transform: scale(1.05);
+}
 
-    /* ===== HERO TYPING TITLE ===== */
-    .typing {
-      font-size: 28px;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #38bdf8;
-      width: 0;
-      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
-    }
+/* ===== Chat Widget ===== */
+#chatBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #38bdf8;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(56,189,248,0.6);
+  font-size: 18px;
+}
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+/* Chat box */
+#chatBox {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 280px;
+  background: #0b1220;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-  </style>
+#chatHeader {
+  background: #38bdf8;
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+}
+
+#chatMessages {
+  height: 150px;
+  padding: 10px;
+  font-size: 13px;
+  overflow-y: auto;
+}
+
+#chatInput {
+  display: flex;
+}
+
+#chatInput input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+#chatInput button {
+  padding: 8px;
+  border-radius: 0;
+}
+</style>
 </head>
 
 <body>
 
-<!-- PARTICLES -->
-<div id="particles"></div>
-
-<header>
-  Hire Noah for Discord Server Setup
-</header>
+<header>Discord Server Setup Services</header>
 
 <nav>
   <a href="#services">Services</a>
   <a href="#pricing">Pricing</a>
-  <a href="#why">Why Me</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="hero">
-  <div class="typing">Professional Discord Server Setup</div>
-  <p style="margin-top: 15px;">
-    I create, manage, and optimise Discord servers for communities, roleplay, and gaming.
-  </p>
+<section id="hero" class="hidden">
+  <h1>Professional Discord Server Setup</h1>
+  <p>Modern, automated and clean Discord servers built for communities.</p>
 </section>
 
 <section id="services">
-  <h2>Services</h2>
+  <h2 class="hidden">Services</h2>
 
-  <div class="card">
+  <div class="card hidden">
     <h3>Server Setup</h3>
-    <p>Full server creation with channels, roles, and permissions.</p>
+    <p>Full Discord server creation with structure, roles, and channels.</p>
   </div>
 
-  <div class="card">
+  <div class="card hidden">
     <h3>Bot Setup</h3>
-    <p>Moderation bots, logging systems, and automation tools.</p>
+    <p>Moderation, logs, welcome systems and automation bots.</p>
   </div>
 
-  <div class="card">
-    <h3>Roleplay Systems</h3>
-    <p>Advanced RP systems with ranks, departments, and structure.</p>
+  <div class="card hidden">
+    <h3>RP Systems</h3>
+    <p>Advanced roleplay systems with ranks, factions, and rules.</p>
   </div>
 </section>
 
 <section id="pricing">
-  <h2>Packages</h2>
+  <h2 class="hidden">Pricing</h2>
 
-  <div class="card">
+  <div class="card hidden">
     <h3>Basic</h3>
-    <p>Simple server setup with essential bots</p>
+    <p>$10 - Simple setup</p>
   </div>
 
-  <div class="card">
+  <div class="card hidden">
     <h3>Advanced</h3>
-    <p>Full setup with advanced systems</p>
+    <p>$25 - Full setup with bots</p>
   </div>
 
-  <div class="card">
+  <div class="card hidden">
     <h3>Premium</h3>
-    <p>Custom systems + full professional build</p>
+    <p>$50 - Full custom system build</p>
   </div>
 </section>
 
-<section id="why">
-  <h2>Why Choose Me</h2>
-
-  <div class="card">
-    <p>
-      High experience in Discord server development. Focused on quality, structure, and meeting deadlines.
-    </p>
-  </div>
+<section id="contact" class="hidden">
+  <h2>Contact</h2>
+  <p>DM: YourUsername#0000</p>
+  <button>Hire Me</button>
 </section>
 
-<section id="contact">
-  <h2>Contact Me</h2>
-  <p>Discord: <strong>𝓝𝓸𝓪𝓱 (un52910163)</strong></p>
-  <button onclick="alert('Add me on Discord: 𝓝𝓸𝓪𝓱')">Hire Me</button>
-</section>
-
-<footer>
-  © 2026 Discord Services | Built by Noah
+<footer style="text-align:center;padding:20px;">
+  © 2026 Discord Services
 </footer>
 
-<!-- SCROLL FADE -->
+<!-- ===== CHAT WIDGET ===== -->
+<button id="chatBtn">💬</button>
+
+<div id="chatBox">
+  <div id="chatHeader">Live Chat</div>
+  <div id="chatMessages">
+    <p><b>Support:</b> Hey! How can I help?</p>
+  </div>
+  <div id="chatInput">
+    <input type="text" id="msg" placeholder="Type...">
+    <button onclick="sendMsg()">Send</button>
+  </div>
+</div>
+
 <script>
-  const sections = document.querySelectorAll("section");
+// ===== Scroll animation (AOS style) =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, { threshold: 0.15 });
+document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
 
-  sections.forEach(section => observer.observe(section));
-</script>
+// ===== Chat toggle =====
+const chatBtn = document.getElementById("chatBtn");
+const chatBox = document.getElementById("chatBox");
 
-<!-- PARTICLES SCRIPT -->
-<script>
-  const container = document.getElementById("particles");
+chatBtn.onclick = () => {
+  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+};
 
-  for (let i = 0; i < 40; i++) {
-    let p = document.createElement("div");
-    p.classList.add("particle");
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDuration = (5 + Math.random() * 10) + "s";
-    p.style.opacity = Math.random();
-    container.appendChild(p);
-  }
+// ===== Fake chat send =====
+function sendMsg(){
+  const msg = document.getElementById("msg");
+  if(msg.value.trim() === "") return;
+
+  const div = document.createElement("p");
+  div.innerHTML = "<b>You:</b> " + msg.value;
+  document.getElementById("chatMessages").appendChild(div);
+
+  msg.value = "";
+}
 </script>
 
 </body>
