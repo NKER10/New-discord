@@ -9,8 +9,41 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000000;
+      background: #000;
       color: white;
+      overflow-x: hidden;
+    }
+
+    /* ===== PARTICLES BACKGROUND ===== */
+    #particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: #000;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #38bdf8;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
     }
 
     header {
@@ -39,23 +72,29 @@
       max-width: 900px;
       margin: auto;
 
-      /* animation setup */
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s ease;
     }
 
-    /* when visible */
     section.show {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* ===== GLASS CARDS + GLOW ===== */
     .card {
       background: #1e293b;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 20px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
     }
 
     button {
@@ -72,10 +111,33 @@
       background: #1e293b;
       margin-top: 40px;
     }
+
+    /* ===== HERO TYPING TITLE ===== */
+    .typing {
+      font-size: 28px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #38bdf8;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
   </style>
 </head>
 
 <body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
 
 <header>
   Hire Noah for Discord Server Setup
@@ -89,8 +151,10 @@
 </nav>
 
 <section id="hero">
-  <h1>Professional Discord Server Setup</h1>
-  <p>I create, manage, and optimise Discord servers for communities, roleplay, and gaming.</p>
+  <div class="typing">Professional Discord Server Setup</div>
+  <p style="margin-top: 15px;">
+    I create, manage, and optimise Discord servers for communities, roleplay, and gaming.
+  </p>
 </section>
 
 <section id="services">
@@ -98,17 +162,17 @@
 
   <div class="card">
     <h3>Server Setup</h3>
-    <p>Full server creation with channels, roles, and permissions. Advanced bots fully setup for safety and structure.</p>
+    <p>Full server creation with channels, roles, and permissions.</p>
   </div>
 
   <div class="card">
     <h3>Bot Setup</h3>
-    <p>Setup moderation bots, logging systems, and automation tools.</p>
+    <p>Moderation bots, logging systems, and automation tools.</p>
   </div>
 
   <div class="card">
-    <h3>Custom Roleplay Systems</h3>
-    <p>Advanced RP systems including rules, ranks, departments, and structures.</p>
+    <h3>Roleplay Systems</h3>
+    <p>Advanced RP systems with ranks, departments, and structure.</p>
   </div>
 </section>
 
@@ -122,7 +186,7 @@
 
   <div class="card">
     <h3>Advanced</h3>
-    <p>Full server setup with advanced bots and structure</p>
+    <p>Full setup with advanced systems</p>
   </div>
 
   <div class="card">
@@ -136,23 +200,22 @@
 
   <div class="card">
     <p>
-      I have high experience in Discord server development and management.
-      I focus on professionalism, structure, and delivering high-quality results on time.
+      High experience in Discord server development. Focused on quality, structure, and meeting deadlines.
     </p>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact Me</h2>
-  <p>DM me on Discord: <strong>𝓝𝓸𝓪𝓱 (un52910163)</strong></p>
-  <button onclick="alert('Add me on Discord: 𝓝𝓸𝓪𝓱 (un52910163)')">Hire Me</button>
+  <p>Discord: <strong>𝓝𝓸𝓪𝓱 (un52910163)</strong></p>
+  <button onclick="alert('Add me on Discord: 𝓝𝓸𝓪𝓱')">Hire Me</button>
 </section>
 
 <footer>
   © 2026 Discord Services | Built by Noah
 </footer>
 
-<!-- ANIMATION SCRIPT -->
+<!-- SCROLL FADE -->
 <script>
   const sections = document.querySelectorAll("section");
 
@@ -162,13 +225,23 @@
         entry.target.classList.add("show");
       }
     });
-  }, {
-    threshold: 0.15
-  });
+  }, { threshold: 0.15 });
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+  sections.forEach(section => observer.observe(section));
+</script>
+
+<!-- PARTICLES SCRIPT -->
+<script>
+  const container = document.getElementById("particles");
+
+  for (let i = 0; i < 40; i++) {
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    p.style.opacity = Math.random();
+    container.appendChild(p);
+  }
 </script>
 
 </body>
