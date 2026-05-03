@@ -215,7 +215,7 @@ button:hover {
 
 <section id="contact" class="hidden">
   <h2>Contact</h2>
-  <p>DM: YourUsername#0000</p>
+  <p>DM:Noah (un52910163)</p>
   <button>Hire Me</button>
 </section>
 
@@ -223,21 +223,7 @@ button:hover {
   © 2026 Discord Services
 </footer>
 
-<!-- ===== CHAT WIDGET ===== -->
-<button id="chatBtn">💬</button>
 
-<div id="chatBox">
-  <div id="chatHeader">Live Chat</div>
-  <div id="chatMessages">
-    <p><b>Support:</b> Hey! How can I help?</p>
-  </div>
-  <div id="chatInput">
-    <input type="text" id="msg" placeholder="Type...">
-    <button onclick="sendMsg()">Send</button>
-  </div>
-</div>
-
-<script>
 // ===== Scroll animation (AOS style) =====
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -249,24 +235,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
 
-// ===== Chat toggle =====
-const chatBtn = document.getElementById("chatBtn");
-const chatBox = document.getElementById("chatBox");
-
-chatBtn.onclick = () => {
-  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
-};
-
-// ===== Fake chat send =====
-function sendMsg(){
-  const msg = document.getElementById("msg");
-  if(msg.value.trim() === "") return;
-
-  const div = document.createElement("p");
-  div.innerHTML = "<b>You:</b> " + msg.value;
-  document.getElementById("chatMessages").appendChild(div);
-
-  msg.value = "";
 }
 </script>
 
